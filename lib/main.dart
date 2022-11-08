@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:thirdapp/sidebar.dart';
 
 import 'Wallet//bottom_bar.dart';
 
@@ -33,10 +34,16 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: const SideBar(),
       appBar: AppBar(
-        title: Text("My Home"),
+        title: const Text("My Home"),
       ),
-      body: Text("Ali"),
+      body: Center(
+        child: SizedBox(
+            width: 100,
+            height: 100,
+            child: Image.asset("./assets/images/Sir.jpeg")),
+      ),
     );
   }
 }

@@ -12,7 +12,7 @@ class WalletView extends StatelessWidget {
       width: size.width,
       height: 300,
       child: Container(
-        margin: const EdgeInsets.all(16.0),
+        margin: const EdgeInsets.all(6.0),
         child: Column(
           children: [
             Container(
@@ -23,18 +23,16 @@ class WalletView extends StatelessWidget {
                   topRight: Radius.circular(21),
                 ),
               ),
-              padding: const EdgeInsets.all(14),
+              padding: const EdgeInsets.all(19),
               child: Column(
                 children: [
                   Row(
                     children: [
-                      const Text(
-                        "DUB",
-                        style: TextStyle(
-                            fontWeight: FontWeight.w400,
-                            fontSize: 20,
-                            color: Colors.white),
-                      ),
+                      const Text("DUB",
+                          style: TextStyle(
+                              fontWeight: FontWeight.w400,
+                              fontSize: 20,
+                              color: Colors.white)),
                       Expanded(
                         child: Container(),
                       ),
@@ -58,14 +56,12 @@ class WalletView extends StatelessWidget {
                               ),
                             ),
                             Center(
-                              child: Transform.rotate(
-                                angle: 1.5,
-                                child: const Icon(
-                                  Icons.local_airport_rounded,
-                                  color: Colors.white,
-                                ),
-                              ),
-                            ),
+                                child: Transform.rotate(
+                                    angle: 1.3,
+                                    child: const Icon(
+                                      Icons.local_airport_rounded,
+                                      color: Colors.white,
+                                    ))),
                           ],
                         ),
                       ),
@@ -77,6 +73,38 @@ class WalletView extends StatelessWidget {
                             fontWeight: FontWeight.w400,
                             fontSize: 20,
                             color: Colors.white),
+                      ),
+                    ],
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: const [
+                      Text(
+                        'Dubai ',
+                        textAlign: TextAlign.start,
+                        style: TextStyle(
+                          fontWeight: FontWeight.w400,
+                          fontSize: 20,
+                          color: Colors.white,
+                        ),
+                      ),
+                      Text(
+                        '8H 30M ',
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          fontWeight: FontWeight.w400,
+                          fontSize: 20,
+                          color: Colors.white,
+                        ),
+                      ),
+                      Text(
+                        ' Karachi ',
+                        textAlign: TextAlign.end,
+                        style: TextStyle(
+                          fontWeight: FontWeight.w400,
+                          fontSize: 20,
+                          color: Colors.white,
+                        ),
                       ),
                     ],
                   )
