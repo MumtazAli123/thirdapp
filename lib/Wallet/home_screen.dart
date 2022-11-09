@@ -25,9 +25,9 @@ class HomeScreen extends StatelessWidget {
                               fontWeight: FontWeight.w400, fontSize: 20),
                         ),
                         Text(
-                          "Wallet",
+                          "Airline Tickets",
                           style: TextStyle(
-                              fontSize: 50,
+                              fontSize: 25,
                               fontWeight: FontWeight.w800,
                               color: Colors.green),
                         ),

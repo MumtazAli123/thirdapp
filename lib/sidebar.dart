@@ -25,7 +25,7 @@ class SideBar extends StatelessWidget {
               Navigator.push(
                   context, MaterialPageRoute(builder: (context) => MyApp()));
             },
-            title: Text("Wallet"),
+            title: const Text("Wallet"),
           )
         ],
       ),

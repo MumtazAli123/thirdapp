@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:thirdapp/UIFiles/animation.dart';
 import 'package:thirdapp/sidebar.dart';
 
 import 'Wallet//bottom_bar.dart';
@@ -16,7 +17,7 @@ class MyApp extends StatelessWidget {
       title: "My App",
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        primarySwatch: Colors.cyan,
+        primarySwatch: Colors.blue,
       ),
       home: const BottomBar(),
     );
@@ -34,15 +35,52 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      floatingActionButton: const Widget005(),
       drawer: const SideBar(),
       appBar: AppBar(
         title: const Text("My Home"),
+        centerTitle: true,
+        actions: [
+          PopupMenuButton(
+            icon: const Icon(Icons.more_vert_outlined),
+            onSelected: (value) {
+              setState(() {});
+            },
+            itemBuilder: (context) => [
+              const PopupMenuItem(
+                value: 1,
+                child: Text(
+                  "Personal Login",
+                  style: TextStyle(
+                    fontSize: 20,
+                  ),
+                ),
+              ),
+              const PopupMenuItem(
+                value: 2,
+                child: Text(
+                  "Business Login",
+                  style: TextStyle(
+                    fontSize: 20,
+                    color: Colors.green,
+                  ),
+                ),
+              ),
+            ],
+          )
+        ],
       ),
       body: Center(
-        child: SizedBox(
-            width: 100,
-            height: 100,
-            child: Image.asset("./assets/images/Sir.jpeg")),
+        child: Column(
+          children: [
+            Container(
+              margin: const EdgeInsets.all(21),
+              width: 100,
+              height: 100,
+              child: Image.asset("./assets/images/Sir.jpeg"),
+            ),
+          ],
+        ),
       ),
     );
   }

@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:thirdapp/UIFiles/animation.dart';
 import 'package:thirdapp/Wallet//home_screen.dart';
+import 'package:thirdapp/Wallet/login.dart';
+import 'package:thirdapp/Wallet/message_page.dart';
 import 'package:thirdapp/main.dart';
 
 class BottomBar extends StatefulWidget {
@@ -14,9 +17,9 @@ class _BottomBarState extends State<BottomBar> {
   static final List<Widget> _widgetOptions = <Widget>[
     const MyHomePage(),
     const HomeScreen(),
-    const Text("Search"),
-    const Text("Notifications"),
-    const Text("Info"),
+    const Widget005(),
+    const MessagePage(),
+    const LoginPage(),
   ];
   void _onItemTapped(int index) {
     setState(() {
@@ -42,10 +45,10 @@ class _BottomBarState extends State<BottomBar> {
         type: BottomNavigationBarType.fixed,
         items: const [
           BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home"),
-          BottomNavigationBarItem(icon: Icon(Icons.wallet), label: "Wallet"),
-          BottomNavigationBarItem(icon: Icon(Icons.search), label: "Search"),
           BottomNavigationBarItem(
-              icon: Icon(Icons.notifications), label: "Notifications"),
+              icon: Icon(Icons.airplane_ticket), label: "Ticket"),
+          BottomNavigationBarItem(icon: Icon(Icons.wallet), label: "Wallet"),
+          BottomNavigationBarItem(icon: Icon(Icons.message), label: "Message"),
           BottomNavigationBarItem(
             icon: Icon(Icons.person),
             label: "INFO",
