@@ -18,6 +18,14 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primarySwatch: Colors.blue,
+        textTheme: const TextTheme(
+          headline1: TextStyle(
+            fontSize: 21,
+            fontWeight: FontWeight.w600,
+          ),
+          headline2: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+          subtitle1: TextStyle(fontWeight: FontWeight.bold, fontSize: 11),
+        ),
       ),
       home: const BottomBar(),
     );
@@ -38,7 +46,10 @@ class _MyHomePageState extends State<MyHomePage> {
       floatingActionButton: const Widget005(),
       drawer: const SideBar(),
       appBar: AppBar(
-        title: const Text("My Home"),
+        title: const Text(
+          "My Home",
+          style: TextStyle(fontFamily: "FontMain"),
+        ),
         centerTitle: true,
         actions: [
           PopupMenuButton(
@@ -53,6 +64,8 @@ class _MyHomePageState extends State<MyHomePage> {
                   "Personal Login",
                   style: TextStyle(
                     fontSize: 20,
+                    color: Colors.red,
+                    fontFamily: "FontMain",
                   ),
                 ),
               ),
@@ -62,6 +75,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   "Business Login",
                   style: TextStyle(
                     fontSize: 20,
+                    fontFamily: "FontMain",
                     color: Colors.green,
                   ),
                 ),
@@ -73,11 +87,16 @@ class _MyHomePageState extends State<MyHomePage> {
       body: Center(
         child: Column(
           children: [
-            Container(
-              margin: const EdgeInsets.all(21),
-              width: 100,
-              height: 100,
-              child: Image.asset("./assets/images/Sir.jpeg"),
+            Card(
+              shadowColor: Colors.red,
+              elevation: 10,
+              child: Container(
+                padding: EdgeInsets.all(7.0),
+                margin: const EdgeInsets.all(11),
+                width: 100,
+                height: 100,
+                child: Image.asset("./assets/images/Sir.jpeg"),
+              ),
             ),
           ],
         ),

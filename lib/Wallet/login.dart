@@ -44,7 +44,7 @@ class _LoginPageState extends State<LoginPage> {
                       decoration: InputDecoration(
                         label: const Text("Enter Name"),
                         hintText: "Name",
-                        prefixIcon: Icon(Icons.person),
+                        prefixIcon: const Icon(Icons.person),
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(21),
                         ),
