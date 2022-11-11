@@ -32,6 +32,7 @@ class WalletView extends StatelessWidget {
                           style: TextStyle(
                               fontWeight: FontWeight.w400,
                               fontSize: 20,
+                              fontFamily: "FontMain",
                               color: Colors.white)),
                       Expanded(
                         child: Container(),

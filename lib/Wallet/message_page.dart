@@ -21,6 +21,7 @@ class _MessagePageState extends State<MessagePage> {
       "Asif",
       "Zubair"
     ];
+    var time = DateTime.now();
     return Scaffold(
       appBar: AppBar(
         title: const Text("Chats"),
@@ -34,6 +35,7 @@ class _MessagePageState extends State<MessagePage> {
             title: Text(arrNames[index]),
             subtitle: const Text("03004355604"),
             trailing: const Icon(Icons.phone),
+            textColor: Colors.black87,
           );
         },
         itemCount: arrNames.length,

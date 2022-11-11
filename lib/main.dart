@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:thirdapp/UIFiles/animation.dart';
 import 'package:thirdapp/sidebar.dart';
+import 'package:intl/intl.dart';
 
 import 'Wallet//bottom_bar.dart';
 
@@ -17,7 +18,7 @@ class MyApp extends StatelessWidget {
       title: "My App",
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.green,
         textTheme: const TextTheme(
           headline1: TextStyle(
             fontSize: 21,
@@ -42,13 +43,25 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
+    var time = DateTime.now();
     return Scaffold(
       floatingActionButton: const Widget005(),
       drawer: const SideBar(),
       appBar: AppBar(
-        title: const Text(
-          "My Home",
-          style: TextStyle(fontFamily: "FontMain"),
+        title: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Container(
+              child: const Text(
+                "My Home",
+                style: TextStyle(fontFamily: "FontMain"),
+              ),
+            ),
+            Text(
+              " ${DateFormat('d MMMM EEEE y').format(time)}",
+              style: const TextStyle(fontSize: 12, fontWeight: FontWeight.w400),
+            ),
+          ],
         ),
         centerTitle: true,
         actions: [
@@ -85,20 +98,16 @@ class _MyHomePageState extends State<MyHomePage> {
         ],
       ),
       body: Center(
-        child: Column(
-          children: [
-            Card(
-              shadowColor: Colors.red,
-              elevation: 10,
-              child: Container(
-                padding: EdgeInsets.all(7.0),
-                margin: const EdgeInsets.all(11),
-                width: 100,
-                height: 100,
-                child: Image.asset("./assets/images/Sir.jpeg"),
-              ),
-            ),
-          ],
+        child: Card(
+          shadowColor: Colors.red,
+          elevation: 10,
+          child: Container(
+            padding: const EdgeInsets.all(7.0),
+            margin: const EdgeInsets.all(11),
+            width: 100,
+            height: 100,
+            child: Image.asset("./assets/images/Sir.jpeg"),
+          ),
         ),
       ),
     );

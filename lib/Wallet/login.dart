@@ -1,4 +1,9 @@
+import 'dart:convert';
 import 'package:flutter/material.dart';
+import 'dart:async';
+import 'package:http/http.dart' as http;
+
+String username = '';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -8,6 +13,26 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
+  TextEditingController name = new TextEditingController();
+  TextEditingController email = new TextEditingController();
+  TextEditingController phone = new TextEditingController();
+  TextEditingController pass = new TextEditingController();
+
+  Future<List> senddata() async {
+    var response = await http.post(
+        Uri.parse("https://babarfurniture.com/mumtaz/insertdata.php"),
+        body: {
+          "name": name.text,
+          "email": email.text,
+          "phone": phone.text,
+          "pass": pass.text,
+        });
+    if (response != "") {
+      name.text = "";
+    }
+    return json.decode(response.body);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -41,10 +66,36 @@ class _LoginPageState extends State<LoginPage> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     TextField(
+                      controller: name,
                       decoration: InputDecoration(
-                        label: const Text("Enter Name"),
+                        label: const Text(
+                          "Enter Name",
+                          style: TextStyle(fontSize: 15, height: 1),
+                        ),
                         hintText: "Name",
-                        prefixIcon: const Icon(Icons.person),
+                        prefixIcon: const Icon(
+                          Icons.person,
+                          color: Colors.blue,
+                        ),
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(41),
+                        ),
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 11,
+                    ),
+                    TextField(
+                      controller: email,
+                      decoration: InputDecoration(
+                        label: const Text(
+                          "Enter Email",
+                          style: TextStyle(fontSize: 15, height: 2),
+                        ),
+                        prefixIcon: const Icon(
+                          Icons.email,
+                          color: Colors.redAccent,
+                        ),
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(21),
                         ),
@@ -54,10 +105,29 @@ class _LoginPageState extends State<LoginPage> {
                       height: 11,
                     ),
                     TextField(
+                      controller: phone,
+                      decoration: InputDecoration(
+                        label: const Text(
+                          "03005400300",
+                          style: TextStyle(fontSize: 15, height: 1),
+                        ),
+                        prefixIcon: const Icon(
+                          Icons.whatsapp,
+                          color: Colors.green,
+                        ),
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(21),
+                        ),
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 11,
+                    ),
+                    TextField(
+                      controller: pass,
                       obscureText: true,
                       decoration: InputDecoration(
                         label: const Text("Enter Password"),
-                        hintText: "Password",
                         suffixIcon: IconButton(
                             onPressed: () {},
                             icon: const Icon(Icons.remove_red_eye)),
@@ -70,7 +140,9 @@ class _LoginPageState extends State<LoginPage> {
                       height: 11,
                     ),
                     ElevatedButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        senddata();
+                      },
                       child: const Text(
                         "Submit",
                         style: TextStyle(
