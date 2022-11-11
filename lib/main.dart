@@ -1,7 +1,11 @@
+import 'dart:html';
+
 import 'package:flutter/material.dart';
 import 'package:thirdapp/UIFiles/animation.dart';
+import 'package:thirdapp/UIFiles/grid_view.dart';
 import 'package:thirdapp/sidebar.dart';
 import 'package:intl/intl.dart';
+import 'dart:core';
 
 import 'Wallet//bottom_bar.dart';
 
@@ -44,6 +48,16 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     var time = DateTime.now();
+    var arrColors = [
+      Colors.red,
+      Colors.yellow,
+      Colors.pink,
+      Colors.orange,
+      Colors.purple,
+      Colors.lime,
+      Colors.tealAccent
+    ];
+
     return Scaffold(
       floatingActionButton: const Widget005(),
       drawer: const SideBar(),
@@ -51,14 +65,12 @@ class _MyHomePageState extends State<MyHomePage> {
         title: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Container(
-              child: const Text(
-                "My Home",
-                style: TextStyle(fontFamily: "FontMain"),
-              ),
+            const Text(
+              "My Home",
+              style: TextStyle(fontFamily: "FontMain"),
             ),
             Text(
-              " ${DateFormat('d MMMM EEEE y').format(time)}",
+              " ${DateFormat('yMMMMEEEEd').format(time)}",
               style: const TextStyle(fontSize: 12, fontWeight: FontWeight.w400),
             ),
           ],
@@ -97,18 +109,15 @@ class _MyHomePageState extends State<MyHomePage> {
           )
         ],
       ),
-      body: Center(
-        child: Card(
-          shadowColor: Colors.red,
-          elevation: 10,
-          child: Container(
-            padding: const EdgeInsets.all(7.0),
-            margin: const EdgeInsets.all(11),
-            width: 100,
-            height: 100,
-            child: Image.asset("./assets/images/Sir.jpeg"),
-          ),
-        ),
+      body: GridView.builder(
+        itemBuilder: (context, index) {
+          return Container(
+            color: arrColors[index],
+          );
+        },
+        itemCount: arrColors.length,
+        gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
+            maxCrossAxisExtent: 150, crossAxisSpacing: 11, mainAxisSpacing: 11),
       ),
     );
   }
