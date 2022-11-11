@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:thirdapp/UIFiles/grid_view.dart';
 
 import 'main.dart';
 
@@ -26,6 +27,17 @@ class SideBar extends StatelessWidget {
                   context, MaterialPageRoute(builder: (context) => MyApp()));
             },
             title: const Text("Wallet"),
+          ),
+          ListTile(
+            leading: Icon(Icons.date_range),
+            onTap: () {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => DatePickedPage(),
+                  ));
+            },
+            title: const Text("Date"),
           )
         ],
       ),
