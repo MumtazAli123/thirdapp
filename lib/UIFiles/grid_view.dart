@@ -10,6 +10,7 @@ class DatePickedPage extends StatefulWidget {
 
 class _DatePickedPageState extends State<DatePickedPage> {
   var selectedDated = DateTime.now();
+  var selectedTime = TimeOfDay.now();
 
   @override
   Widget build(BuildContext context) {
@@ -17,22 +18,143 @@ class _DatePickedPageState extends State<DatePickedPage> {
       appBar: AppBar(
         title: const Text("Card"),
       ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text("Show Date"),
-            ElevatedButton(
-                onPressed: () async {
-                  DateTime? datePicked = await showDatePicker(
-                      context: context,
-                      initialDate: DateTime.now(),
-                      firstDate: DateTime(1950),
-                      lastDate: DateTime(2023));
-                },
-                child: Text("Date")),
-          ],
-        ),
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Card(
+            shadowColor: Colors.grey,
+            elevation: 5,
+            child: Column(
+              children: [
+                Container(
+                  padding: const EdgeInsets.all(4.0),
+                  margin: const EdgeInsets.all(11),
+                  width: 150,
+                  height: 100,
+                  child: Image.asset(
+                    "./assets/images/Sir.jpeg",
+                    width: 200,
+                  ),
+                ),
+                Container(
+                  width: 100,
+                  padding: const EdgeInsets.only(bottom: 4.0),
+                  child: ElevatedButton(
+                      onPressed: () async {
+                        DateTime? datePicked = await showDatePicker(
+                            context: context,
+                            initialDate: DateTime.now(),
+                            firstDate: DateTime(1950),
+                            lastDate: DateTime(2023));
+                        if (datePicked != null) {
+                          if (kDebugMode) {
+                            print(
+                                'Date Selected: ${datePicked.day}-${datePicked.month}-${datePicked.year}');
+                          }
+                        }
+                      },
+                      child: const Text(
+                        "Date",
+                        style: TextStyle(fontSize: 25, fontFamily: 'FontMain'),
+                      )),
+                ),
+                Container(
+                  padding: const EdgeInsets.all(5.0),
+                  child: TextButton(
+                      onPressed: () async {
+                        TimeOfDay? pickedTime = await showTimePicker(
+                          context: context,
+                          initialTime: TimeOfDay.now(),
+                          initialEntryMode: TimePickerEntryMode.dial,
+                        );
+                        if (pickedTime != null) {
+                          if (kDebugMode) {
+                            if (kDebugMode) {
+                              print(
+                                  'select Time: ${pickedTime.hour}:${pickedTime.minute}');
+                            }
+                          }
+                        }
+                      },
+                      child: const Text(
+                        "Select Time",
+                        style: TextStyle(
+                            fontFamily: 'FontMain',
+                            fontSize: 30,
+                            fontWeight: FontWeight.w600),
+                      )),
+                )
+              ],
+            ),
+          ),
+          Card(
+            shadowColor: Colors.grey,
+            elevation: 5,
+            child: Column(
+              children: [
+                Container(
+                  padding: const EdgeInsets.all(4.0),
+                  margin: const EdgeInsets.all(11),
+                  width: 150,
+                  height: 100,
+                  child: Image.asset(
+                    "./assets/images/Sir.jpeg",
+                    width: 200,
+                  ),
+                ),
+                Container(
+                  width: 100,
+                  padding: const EdgeInsets.only(bottom: 4.0),
+                  child: ElevatedButton(
+                      onPressed: () async {
+                        DateTime? datePicked = await showDatePicker(
+                            context: context,
+                            initialDate: DateTime.now(),
+                            firstDate: DateTime(1950),
+                            lastDate: DateTime(2023));
+                        if (datePicked != null) {
+                          if (kDebugMode) {
+                            print(
+                                'Date Selected: ${datePicked.day}-${datePicked.month}-${datePicked.year}');
+                          }
+                        }
+                      },
+                      child: const Text(
+                        "Date",
+                        style: TextStyle(fontSize: 25, fontFamily: 'FontMain'),
+                      )),
+                ),
+                Container(
+                  padding: const EdgeInsets.all(5.0),
+                  child: TextButton(
+                      onPressed: () async {
+                        TimeOfDay? pickedTime = await showTimePicker(
+                          context: context,
+                          initialTime: TimeOfDay.now(),
+                          initialEntryMode: TimePickerEntryMode.dial,
+                        );
+                        if (pickedTime != null) {
+                          if (kDebugMode) {
+                            if (kDebugMode) {
+                              print(
+                                  'select Time: ${pickedTime.hour}:${pickedTime.minute}');
+                            }
+                          }
+                        }
+                      },
+                      child: const Text(
+                        "Select Time",
+                        style: TextStyle(
+                            fontFamily: 'FontMain',
+                            fontSize: 30,
+                            fontWeight: FontWeight.w600),
+                      )),
+                )
+              ],
+            ),
+          ),
+        ],
       ),
     );
   }

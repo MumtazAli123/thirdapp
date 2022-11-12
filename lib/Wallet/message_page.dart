@@ -21,7 +21,6 @@ class _MessagePageState extends State<MessagePage> {
       "Asif",
       "Zubair"
     ];
-    var time = DateTime.now();
     return Scaffold(
       appBar: AppBar(
         title: const Text("Chats"),

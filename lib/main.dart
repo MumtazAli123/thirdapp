@@ -1,11 +1,10 @@
-import 'dart:html';
-
 import 'package:flutter/material.dart';
 import 'package:thirdapp/UIFiles/animation.dart';
-import 'package:thirdapp/UIFiles/grid_view.dart';
 import 'package:thirdapp/sidebar.dart';
+// ignore: depend_on_referenced_packages
 import 'package:intl/intl.dart';
 import 'dart:core';
+import 'package:http/http.dart' as http;
 
 import 'Wallet//bottom_bar.dart';
 
@@ -121,4 +120,9 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
     );
   }
+}
+
+class Network {
+  final String url;
+  Network(this.url);
 }

@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:thirdapp/Wallet/wallet_view.dart';
 
@@ -75,7 +76,9 @@ class HomeScreen extends StatelessWidget {
                     ),
                     InkWell(
                         onTap: () {
-                          print("Raja");
+                          if (kDebugMode) {
+                            print("Raja");
+                          }
                         },
                         child: const Text("View all")),
                   ],
@@ -83,7 +86,7 @@ class HomeScreen extends StatelessWidget {
               ],
             ),
           ),
-          WalletView(),
+          const WalletView(),
         ],
       ),
     );

@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'dart:async';
 import 'package:http/http.dart' as http;
+import 'package:thirdapp/Wallet/home_screen.dart';
 
 String username = '';
 
@@ -13,12 +14,35 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
-  TextEditingController name = new TextEditingController();
-  TextEditingController email = new TextEditingController();
-  TextEditingController phone = new TextEditingController();
-  TextEditingController pass = new TextEditingController();
+  TextEditingController name = TextEditingController();
+  TextEditingController email = TextEditingController();
+  TextEditingController phone = TextEditingController();
+  TextEditingController pass = TextEditingController();
 
-  Future<List> senddata() async {
+  // ignore: non_constant_identifier_names
+  void ClearText() {
+    name.clear();
+    email.clear();
+    phone.clear();
+    pass.clear();
+  }
+
+  String? get _errorText {
+    // at any time, we can get the text from _controller.value.text
+    // Note: you can do your own custom validation here
+    // Move this logic this outside the widget for more testable code
+
+    if (name.text.length < 2) {
+      return 'Too short';
+    }
+    // return null if the text is valid
+    else {
+      return null;
+    }
+  }
+
+  // ignore: non_constant_identifier_names
+  Future<List> Senddata() async {
     var response = await http.post(
         Uri.parse("https://babarfurniture.com/mumtaz/insertdata.php"),
         body: {
@@ -27,9 +51,8 @@ class _LoginPageState extends State<LoginPage> {
           "phone": phone.text,
           "pass": pass.text,
         });
-    if (response != "") {
-      name.text = "";
-    }
+    // ignore: unrelated_type_equality_checks
+
     return json.decode(response.body);
   }
 
@@ -77,6 +100,7 @@ class _LoginPageState extends State<LoginPage> {
                           Icons.person,
                           color: Colors.blue,
                         ),
+                        errorText: _errorText,
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(41),
                         ),
@@ -141,7 +165,12 @@ class _LoginPageState extends State<LoginPage> {
                     ),
                     ElevatedButton(
                       onPressed: () {
-                        senddata();
+                        Senddata();
+                        ClearText();
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const HomeScreen()));
                       },
                       child: const Text(
                         "Submit",

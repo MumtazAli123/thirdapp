@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:thirdapp/UIFiles/grid_view.dart';
+import 'package:thirdapp/Wallet/showdata.dart';
 
 import 'main.dart';
 
@@ -21,23 +22,39 @@ class SideBar extends StatelessWidget {
             ),
           ),
           ListTile(
-            leading: Icon(Icons.wallet),
+            leading: const Icon(Icons.airplane_ticket),
             onTap: () {
-              Navigator.push(
-                  context, MaterialPageRoute(builder: (context) => MyApp()));
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => const MyApp()));
             },
-            title: const Text("Wallet"),
+            title: const Text("Airline Ticket"),
           ),
           ListTile(
-            leading: Icon(Icons.date_range),
+            leading: const Icon(Icons.date_range),
             onTap: () {
               Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => DatePickedPage(),
+                    builder: (context) => const DatePickedPage(),
                   ));
             },
             title: const Text("Date"),
+          ),
+          ListTile(
+            leading: const Icon(Icons.api),
+            onTap: () async {
+              // var response =
+              //     await BasClient().get('/users').catchError((err) {});
+              // if (response == null) return;
+              // debugPrint("Successfull");
+
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const MyApi(),
+                  ));
+            },
+            title: const Text("Api Data"),
           )
         ],
       ),
