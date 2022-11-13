@@ -51,7 +51,7 @@ class SideBar extends StatelessWidget {
               Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => const MyApi(),
+                    builder: (context) => PostsList(),
                   ));
             },
             title: const Text("Api Data"),

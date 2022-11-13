@@ -1,61 +1,49 @@
 import 'package:flutter/material.dart';
-import 'dart:convert';
-import 'package:http/http.dart' as http;
+import 'package:thirdapp/Wallet/post.dart';
 
-const String baseUrl = 'https://babarfurniture.com/mumtaz/reg.php';
+class PostsList extends StatefulWidget {
+  PostsList({super.key});
 
-class BasClient {
-  Future<dynamic> post(String api) async {}
-
-  var Client = http.Client();
-  Future<dynamic> get(String api) async {
-    var url = Uri.parse(baseUrl + api);
-    var response = await Client.get(url);
-    if (response.statusCode == 200) {
-      return response.body;
-    } else {
-      //thro exception and catch it i UI
-    }
-  }
-
-  Future<dynamic> put(String api) async {}
-
-  Future<dynamic> delete(String api) async {}
-}
-
-class MyApi extends StatefulWidget {
-  const MyApi({super.key});
+  Future<List<Map>> _futureItems = HTTPHelper().fetchItems();
 
   @override
-  State<StatefulWidget> createState() {
-    return MyApiState();
-  }
+  State<PostsList> createState() => _PostsListState();
 }
 
-class MyApiState extends State<MyApi> {
-  get getList => null;
-
+class _PostsListState extends State<PostsList> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("MyApi"),
+        title: Text("My Post"),
       ),
-      body: ListView.builder(
-          itemCount: getList == null ? 0 : getList.length,
-          itemBuilder: (BuildContext context, int index) {
-            return Center(
-              child: Column(
-                children: <Widget>[
-                  Card(
-                    child: Text(
-                      getList[index].toString(),
-                    ),
-                  )
-                ],
-              ),
-            );
-          }),
+      body: FutureBuilder<List<Map>>(
+        // future: _futureItems(),
+        builder: (BuildContext context, AsyncSnapshot snapshot) {
+          //  check for error
+          if (snapshot.hasError) {
+            return Text("Some Error ${snapshot.error}");
+          }
+
+          //has data arrived
+          if (snapshot.hasData) {
+            List<Map> posts = snapshot.data;
+            return ListView.builder(
+                itemCount: posts.length,
+                itemBuilder: (context, index) {
+                  Map thisItem = posts[index];
+                  return ListTile(
+                    title: Text('${thisItem['title']}'),
+                    subtitle: Text('${thisItem['body']}'),
+                  );
+                });
+          }
+
+          //
+          // display loader
+          return const Center(child: CircularProgressIndicator());
+        },
+      ),
     );
   }
 }

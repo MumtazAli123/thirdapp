@@ -4,8 +4,6 @@ import 'package:thirdapp/sidebar.dart';
 // ignore: depend_on_referenced_packages
 import 'package:intl/intl.dart';
 import 'dart:core';
-import 'package:http/http.dart' as http;
-
 import 'Wallet//bottom_bar.dart';
 
 void main() {
