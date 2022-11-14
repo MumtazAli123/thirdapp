@@ -77,12 +77,19 @@ class _DatePickedPageState extends State<DatePickedPage> {
                           }
                         }
                       },
-                      child: const Text(
-                        "Select Time",
-                        style: TextStyle(
-                            fontFamily: 'FontMain',
-                            fontSize: 30,
-                            fontWeight: FontWeight.w600),
+                      child: Card(
+                        elevation: 3,
+                        child: Container(
+                          padding: EdgeInsets.all(6.0),
+                          child: const Text(
+                            "Select Time",
+                            style: TextStyle(
+                                fontFamily: 'FontMain',
+                                fontSize: 20,
+                                color: Colors.blue,
+                                fontWeight: FontWeight.w400),
+                          ),
+                        ),
                       )),
                 )
               ],
@@ -147,8 +154,9 @@ class _DatePickedPageState extends State<DatePickedPage> {
                         "Select Time",
                         style: TextStyle(
                             fontFamily: 'FontMain',
-                            fontSize: 30,
-                            fontWeight: FontWeight.w600),
+                            fontSize: 20,
+                            color: Colors.blue,
+                            fontWeight: FontWeight.w400),
                       )),
                 )
               ],
