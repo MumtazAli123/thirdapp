@@ -1,47 +1,52 @@
+import 'dart:convert';
 import 'package:flutter/material.dart';
-import 'package:thirdapp/Wallet/post.dart';
+import 'dart:async';
+import 'package:http/http.dart' as http;
 
 class PostsList extends StatefulWidget {
-  PostsList({super.key});
-
-  Future<List<Map>> _futureItems = HTTPHelper().fetchItems();
+  const PostsList({super.key, required this.title});
+  final String title;
 
   @override
   State<PostsList> createState() => _PostsListState();
 }
 
 class _PostsListState extends State<PostsList> {
+  Future getData() async {
+    var url = "https://babarfurniture.com/mumtaz/reg.php";
+    var response = await http.get(Uri.parse(url));
+    return json.decode(response.body);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("My Post"),
+        title: const Text("My Post"),
       ),
-      body: FutureBuilder<List<Map>>(
-        // future: _futureItems(),
-        builder: (BuildContext context, AsyncSnapshot snapshot) {
-          //  check for error
-          if (snapshot.hasError) {
-            return Text("Some Error ${snapshot.error}");
-          }
-
-          //has data arrived
-          if (snapshot.hasData) {
-            List<Map> posts = snapshot.data;
-            return ListView.builder(
-                itemCount: posts.length,
-                itemBuilder: (context, index) {
-                  Map thisItem = posts[index];
-                  return ListTile(
-                    title: Text('${thisItem['title']}'),
-                    subtitle: Text('${thisItem['body']}'),
-                  );
-                });
-          }
-
-          //
-          // display loader
-          return const Center(child: CircularProgressIndicator());
+      body: FutureBuilder(
+        future: getData(),
+        builder: (context, snapshot) {
+          if (snapshot.hasError) print("error found");
+          return snapshot.hasData
+              ? ListView.builder(
+                  itemCount: snapshot.data.length,
+                  itemBuilder: (context, index) {
+                    List list = snapshot.data;
+                    return ListTile(
+                      leading: CircleAvatar(
+                        backgroundImage: NetworkImage(list[index]["imgurl"]),
+                      ),
+                      title: Text(list[index]['name']),
+                      subtitle: Text(list[index]['phone']),
+                      trailing: const Text('Follow'),
+                      onTap: () {
+                        print(list[index]['name']);
+                      },
+                    );
+                  },
+                )
+              : const Center(child: CircularProgressIndicator());
         },
       ),
     );
