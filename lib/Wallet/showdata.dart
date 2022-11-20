@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'dart:async';
 import 'package:http/http.dart' as http;
@@ -34,16 +35,17 @@ class _PostsListState extends State<PostsList> {
                   itemBuilder: (context, index) {
                     List list = snapshot.data;
                     return ListTile(
-                      leading: CircleAvatar(
-                        backgroundImage: NetworkImage(list[index]["imgurl"]),
-                      ),
-                      title: Text(list[index]['name']),
-                      subtitle: Text(list[index]['phone']),
-                      trailing: const Text('Follow'),
-                      onTap: () {
-                        print(list[index]['name']);
-                      },
-                    );
+                        leading: CircleAvatar(
+                          backgroundImage: NetworkImage(list[index]["imgurl"]),
+                        ),
+                        title: Text(list[index]['name']),
+                        subtitle: Text(list[index]['phone']),
+                        trailing: const Text('Follow'),
+                        onTap: () {
+                          if (kDebugMode) {
+                            print(list[index]['name']);
+                          }
+                        });
                   },
                 )
               : const Center(child: CircularProgressIndicator());
@@ -51,4 +53,6 @@ class _PostsListState extends State<PostsList> {
       ),
     );
   }
+
+  selectItem(list) {}
 }
