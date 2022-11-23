@@ -1,8 +1,6 @@
-import 'dart:convert';
 import 'package:flutter/material.dart';
-import 'dart:async';
-import 'package:http/http.dart' as http;
-import 'package:thirdapp/Wallet/home_screen.dart';
+import 'package:thirdapp/Wallet/bottom_bar.dart';
+import 'package:thirdapp/Wallet/login.dart';
 import 'package:thirdapp/sidebar.dart';
 
 void main() {
@@ -21,7 +19,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      home: const BottomBar(),
     );
   }
 }
@@ -55,5 +53,5 @@ class _MyHomePageState extends State<MyHomePage> {
 }
 
 _buildBody() {
-  return const HomeScreen();
+  return const LoginPage();
 }

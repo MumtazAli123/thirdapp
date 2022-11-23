@@ -4,15 +4,15 @@ import 'package:flutter/material.dart';
 import 'dart:async';
 import 'package:http/http.dart' as http;
 
-class PostsList extends StatefulWidget {
-  const PostsList({super.key, required this.title});
+class ShowPostsList extends StatefulWidget {
+  const ShowPostsList({super.key, required this.title});
   final String title;
 
   @override
-  State<PostsList> createState() => _PostsListState();
+  State<ShowPostsList> createState() => _ShowPostsListState();
 }
 
-class _PostsListState extends State<PostsList> {
+class _ShowPostsListState extends State<ShowPostsList> {
   Future getData() async {
     var url = "https://babarfurniture.com/mumtaz/reg.php";
     var response = await http.get(Uri.parse(url));

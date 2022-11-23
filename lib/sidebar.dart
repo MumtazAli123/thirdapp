@@ -51,7 +51,7 @@ class SideBar extends StatelessWidget {
               Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => const PostsList(
+                    builder: (context) => const ShowPostsList(
                       title: 'Name',
                     ),
                   ));

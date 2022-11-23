@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:thirdapp/UIFiles/animation.dart';
+import 'package:thirdapp/UIFiles/grid_view.dart';
 import 'package:thirdapp/Wallet//home_screen.dart';
 import 'package:thirdapp/Wallet/login.dart';
 import 'package:thirdapp/Wallet/message_page.dart';
-import 'package:thirdapp/main.dart';
+import 'package:thirdapp/Wallet/showdata.dart';
 
 class BottomBar extends StatefulWidget {
   const BottomBar({Key? key}) : super(key: key);
@@ -13,11 +13,13 @@ class BottomBar extends StatefulWidget {
 }
 
 class _BottomBarState extends State<BottomBar> {
-  int _selectedIndex = 1;
+  int _selectedIndex = 0;
   static final List<Widget> _widgetOptions = <Widget>[
-    const MyApp(),
+    const DatePickedPage(),
     const HomeScreen(),
-    const Widget005(),
+    const ShowPostsList(
+      title: 'List',
+    ),
     const MessagePage(),
     const LoginPage(),
   ];
