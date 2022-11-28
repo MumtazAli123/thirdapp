@@ -21,12 +21,12 @@ class LoginPage extends StatefulWidget {
 class _LoginPageState extends State<LoginPage> {
   final _formKey = GlobalKey<FormState>();
   bool _obscureText = true;
-  TextEditingController _nameController = TextEditingController();
-  TextEditingController _emailController = TextEditingController();
-  TextEditingController _phoneController = TextEditingController();
+  final TextEditingController _nameController = TextEditingController();
+  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _phoneController = TextEditingController();
   UserProfileModel? authCustomerUser = UserProfileModel();
-  TextEditingController _passwordController = TextEditingController();
-  AuthenticationService _authenticationService = AuthenticationService();
+  final TextEditingController _passwordController = TextEditingController();
+  final AuthenticationService _authenticationService = AuthenticationService();
   // LoginApiServices _authenticationService = LoginApiServices();
 
   // ignore: non_constant_identifier_names
@@ -138,12 +138,13 @@ class _LoginPageState extends State<LoginPage> {
                     CustomButton(
                       buttonText: "signing",
                       onPressed: () async {
-                        authCustomerUser = await _authenticationService.Login(
-                            _nameController.text,
-                            _emailController.text,
-                            _phoneController.text,
-                            _passwordController.text,
-                            context); //get token
+                        authCustomerUser =
+                            await _authenticationService.register(
+                                _nameController.text,
+                                _emailController.text,
+                                _phoneController.text,
+                                _passwordController.text,
+                                context); //get token
                       },
                     ),
                   ],
