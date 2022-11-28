@@ -2,8 +2,12 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'dart:async';
 import 'package:http/http.dart' as http;
+import 'package:thirdapp/models/user_profile_model.dart';
 import 'package:thirdapp/screens/bottom_bar.dart';
+import 'package:thirdapp/services/http_services.dart';
 import 'package:thirdapp/widgets/input_widget.dart';
+
+import '../widgets/custom_button.dart';
 
 String username = '';
 
@@ -20,46 +24,47 @@ class _LoginPageState extends State<LoginPage> {
   TextEditingController _nameController = TextEditingController();
   TextEditingController _emailController = TextEditingController();
   TextEditingController _phoneController = TextEditingController();
-  // UserProfileModel? authCustomerUser = UserProfileModel();
+  UserProfileModel? authCustomerUser = UserProfileModel();
   TextEditingController _passwordController = TextEditingController();
+  AuthenticationService _authenticationService = AuthenticationService();
   // LoginApiServices _authenticationService = LoginApiServices();
 
   // ignore: non_constant_identifier_names
-  void ClearText() {
-    _nameController.clear();
-    _emailController.clear();
-    _phoneController.clear();
-    _passwordController.clear();
-  }
-
-  String? get _errorText {
-    // at any time, we can get the text from _controller.value.text
-    // Note: you can do your own custom validation here
-    // Move this logic this outside the widget for more testable code
-
-    if (_nameController.text.length < 2) {
-      return 'Too short';
-    }
-    // return null if the text is valid
-    else {
-      return null;
-    }
-  }
+  // void ClearText() {
+  //   _nameController.clear();
+  //   _emailController.clear();
+  //   _phoneController.clear();
+  //   _passwordController.clear();
+  // }
+  //
+  // String? get _errorText {
+  //   // at any time, we can get the text from _controller.value.text
+  //   // Note: you can do your own custom validation here
+  //   // Move this logic this outside the widget for more testable code
+  //
+  //   if (_nameController.text.length < 2) {
+  //     return 'Too short';
+  //   }
+  //   // return null if the text is valid
+  //   else {
+  //     return null;
+  //   }
+  // }
 
   // ignore: non_constant_identifier_names
-  Future<List> Senddata() async {
-    var response = await http.post(
-        Uri.parse("https://babarfurniture.com/mumtaz/insertdata.php"),
-        body: {
-          "name": _nameController.text,
-          "email": _emailController.text,
-          "phone": _phoneController.text,
-          "pass": _passwordController.text,
-        });
-    // ignore: unrelated_type_equality_checks
-
-    return json.decode(response.body);
-  }
+  // Future<List> Senddata() async {
+  //   var response = await http.post(
+  //       Uri.parse("https://babarfurniture.com/mumtaz/insertdata.php"),
+  //       body: {
+  //         "name": _nameController.text,
+  //         "email": _emailController.text,
+  //         "phone": _phoneController.text,
+  //         "pass": _passwordController.text,
+  //       });
+  //   // ignore: unrelated_type_equality_checks
+  //
+  //   return json.decode(response.body);
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -130,20 +135,16 @@ class _LoginPageState extends State<LoginPage> {
                     const SizedBox(
                       height: 11,
                     ),
-                    ElevatedButton(
-                      onPressed: () {
-                        Senddata();
-                        ClearText();
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => const BottomBarScreen()));
+                    CustomButton(
+                      buttonText: "signing",
+                      onPressed: () async {
+                        authCustomerUser = await _authenticationService.Login(
+                            _nameController.text,
+                            _emailController.text,
+                            _phoneController.text,
+                            _passwordController.text,
+                            context); //get token
                       },
-                      child: const Text(
-                        "Submit",
-                        style: TextStyle(
-                            fontWeight: FontWeight.w400, fontSize: 20),
-                      ),
                     ),
                   ],
                 ),
