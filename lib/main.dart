@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:thirdapp/Wallet/bottom_bar.dart';
-import 'package:thirdapp/Wallet/login.dart';
+import 'package:thirdapp/screens/bottom_bar.dart';
+import 'package:thirdapp/screens/login.dart';
 import 'package:thirdapp/sidebar.dart';
 
 void main() {
@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const BottomBar(),
+      home: const BottomBarScreen(),
     );
   }
 }

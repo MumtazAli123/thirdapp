@@ -1,7 +1,7 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:thirdapp/Wallet/home_screen.dart';
-import 'package:thirdapp/Wallet/login.dart';
+import 'package:thirdapp/screens/bottom_bar.dart';
+import 'package:thirdapp/screens/login.dart';
 
 class CreateAccountScreen extends StatefulWidget {
   const CreateAccountScreen({Key? key}) : super(key: key);
@@ -84,7 +84,7 @@ class _CreateAccountScreenState extends State<CreateAccountScreen> {
                     child: TextField(
                       keyboardType: TextInputType.phone,
                       decoration: InputDecoration(
-                          suffixStyle: TextStyle(color: Colors.grey),
+                          suffixStyle: const TextStyle(color: Colors.grey),
                           // suffixIcon: Icon(Icons.check,color: Color.fromRGBO(252, 186, 24, 1),),
 
                           prefixStyle: const TextStyle(color: Colors.grey),
@@ -210,7 +210,7 @@ class _CreateAccountScreenState extends State<CreateAccountScreen> {
                                 context,
                                 MaterialPageRoute(
                                     builder: (BuildContext context) =>
-                                        const HomeScreen()),
+                                        const BottomBarScreen()),
                               );
                             })),
                   ),

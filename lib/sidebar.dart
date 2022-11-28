@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:thirdapp/UIFiles/grid_view.dart';
-import 'package:thirdapp/Wallet/showdata.dart';
+import 'package:thirdapp/screens/bottom_bar.dart';
+import 'package:thirdapp/screens/showdata.dart';
 
 import 'main.dart';
 
@@ -35,7 +35,7 @@ class SideBar extends StatelessWidget {
               Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => const DatePickedPage(),
+                    builder: (context) => const BottomBarScreen(),
                   ));
             },
             title: const Text("Date"),

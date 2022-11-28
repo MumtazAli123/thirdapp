@@ -1,18 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:thirdapp/UIFiles/grid_view.dart';
-import 'package:thirdapp/Wallet//home_screen.dart';
-import 'package:thirdapp/Wallet/login.dart';
-import 'package:thirdapp/Wallet/showdata.dart';
+import 'package:thirdapp/screens/home_screen.dart';
+import 'package:thirdapp/screens/login.dart';
+import 'package:thirdapp/screens/showdata.dart';
+
 import 'package:thirdapp/signing_screen/create_account.dart';
 
-class BottomBar extends StatefulWidget {
-  const BottomBar({Key? key}) : super(key: key);
+class BottomBarScreen extends StatefulWidget {
+  const BottomBarScreen({Key? key}) : super(key: key);
 
   @override
-  State<BottomBar> createState() => _BottomBarState();
+  State<BottomBarScreen> createState() => _BottomBarScreenState();
 }
 
-class _BottomBarState extends State<BottomBar> {
+class _BottomBarScreenState extends State<BottomBarScreen> {
   int _selectedIndex = 0;
   static final List<Widget> _widgetOptions = <Widget>[
     const DatePickedPage(),
