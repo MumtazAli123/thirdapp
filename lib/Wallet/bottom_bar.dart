@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:thirdapp/UIFiles/grid_view.dart';
 import 'package:thirdapp/Wallet//home_screen.dart';
 import 'package:thirdapp/Wallet/login.dart';
-import 'package:thirdapp/Wallet/message_page.dart';
 import 'package:thirdapp/Wallet/showdata.dart';
+import 'package:thirdapp/signing_screen/create_account.dart';
 
 class BottomBar extends StatefulWidget {
   const BottomBar({Key? key}) : super(key: key);
@@ -20,7 +20,7 @@ class _BottomBarState extends State<BottomBar> {
     const ShowPostsList(
       title: 'List',
     ),
-    const MessagePage(),
+    const CreateAccountScreen(),
     const LoginPage(),
   ];
   void _onItemTapped(int index) {
