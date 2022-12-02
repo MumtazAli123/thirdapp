@@ -24,7 +24,7 @@ class AuthenticationService with ChangeNotifier {
 
   // Http Get request
   Future<http.Response> _get(String endPoint, Map<String, String> header) {
-    String url = APIConstants.API_BASE_URL + endPoint;
+    String url = ApiConstants002.API_BASE_URL + endPoint;
     // print("_get: $url");
     Uri uri = Uri.parse(url);
     return http.get(uri, headers: header);
